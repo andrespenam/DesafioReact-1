@@ -4,7 +4,7 @@
 }
 
 .header{
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(./assets/img/Header.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(./src/assets/img/Header.jpg);
     background-size: cover;
     background-position: center;
     color: white;
