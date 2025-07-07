@@ -16,7 +16,7 @@ function CardPizza({title, ingredientes, image, price}) {
       <Card.Body>
         <Card.Title className='display-6 fw bold mb-3 text-start'>{title}</Card.Title>
         <Card.Text className='lead fs-6 text-center'>
-          <p><i class="fa-solid fa-pizza-slice">{element7}</i>  {ingredientes}</p>
+          <i className="fa-solid fa-pizza-slice">{element7}</i>  {ingredientes}
         </Card.Text>
       </Card.Body>
       <ListGroup className="text-center display-5 fw bold mb-3">

@@ -6,6 +6,7 @@ El Siguiente desafio se hizo de la siguiente manera:
 #### 2.- Armado desafio uno a uno.
 #### 3.- Agregando interaccion Javascript.
 #### 4.- Agregando Login y Register page.
+#### 5.- Agregando Cart y Renderizado
 #### 5.- Subido a GitHub.
 
 
