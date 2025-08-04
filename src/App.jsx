@@ -26,14 +26,14 @@ function App() {
 
   const total = cart.reduce((acc, pizza) => acc + pizza.price * pizza.count, 0);
 
-
+  
   const rutasConNavbar = ['/', '/register', '/loginPage', '/profile', '/cart', '/pizza'];
   const mostrarNavbar = rutasConNavbar.includes(location.pathname);
 
   return (
     <>
       <div>
-        {mostrarNavbar && <Navbar1 total={total} />}
+        {mostrarNavbar && <Navbar1 total={total} />} 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -49,6 +49,3 @@ function App() {
 }
 
 export default App;
-
-
-

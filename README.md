@@ -7,8 +7,8 @@ El Siguiente desafio se hizo de la siguiente manera:
 #### 3.- Agregando interaccion Javascript.
 #### 4.- Agregando Login y Register page.
 #### 5.- Agregando Cart y Renderizado
-#### 6.- Agregando Consumo de Apis
-#### 7.- Agragado de React-Router
+#### 6.- Consumo de Apis
+#### 7.- Agregando React-Router
 #### 8.- Subido a GitHub.
 
 
