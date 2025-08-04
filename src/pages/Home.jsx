@@ -1,10 +1,14 @@
 import React from 'react'
-import Header from './Header'
-import CardPizza from './CardPizza'
+import Header from '../components/Header'
+import CardPizza from '../components/CardPizza'
 import img1 from '../assets/img/pepe.jpg'
 import img2 from '../assets/img/pepe2.jpg'
 import img3 from '../assets/img/pizzaesp.jpg'
 import { pizzas } from '../util/pizzas'
+import Footer from '../components/Footer'
+import Navbar1 from '../components/Navbar'  
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -42,7 +46,12 @@ function Home() {
             price = "$6.950"
             />*/}
         </section>
+        <Link to="/pizza" className="text-center" style={{ textDecoration: 'none' }}>
+        <button className="more btn btn-dark">Más Pizzas</button>
+      </Link>
       </main>
+
+      <Footer />
 
     </div>
   )

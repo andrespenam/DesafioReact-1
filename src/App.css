@@ -1,10 +1,10 @@
 #root {
- padding: 0%;
- margin: 0%;
+    padding: 0%;
+    margin: 0%;
 }
 
-.header{
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(./src/assets/img/Header.jpg);
+.header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(./src/assets/img/Header.jpg);
     background-size: cover;
     background-position: center;
     color: white;
@@ -12,15 +12,69 @@
     height: 15rem;
 }
 
-.header h1{
+.header h1 {
 
     padding-top: 2.5rem;
 
 }
 
 
-.footer{
+.footer {
     margin-top: 1rem;
     color: white;
     height: 5rem;
+}
+
+.more {
+    display: block;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+
+.pizza-404-page {
+    background-color: #1c1c1c;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.pizza-404-content {
+    text-align: center;
+}
+
+.pizza-404-title {
+    font-size: 8rem;
+    color: #ffcc00;
+    text-shadow: 2px 2px #ff6600;
+    margin-bottom: 10px;
+}
+
+.pizza-404-message {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.pizza-404-gif {
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.pizza-404-button {
+    padding: 12px 24px;
+    background-color: #ff9900;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.pizza-404-button:hover {
+    background-color: #ffaa33;
 }
