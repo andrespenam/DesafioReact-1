@@ -13,10 +13,12 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
-function Navbar1({ total = 0 }) {
+function Navbar1() {
   const [token, setToken] = useState(false);
   const navigate = useNavigate();
+  const { totalPrice } = useCart();
 
   useEffect(() => {
     const session = localStorage.getItem("session");
@@ -30,7 +32,7 @@ function Navbar1({ total = 0 }) {
   };
 
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar bg="dark" data-bs-theme="dark" fixed="top">
       <Container>
         <Navbar.Brand as={Link} to="/">
           Pizzería Mamma Mia
@@ -72,7 +74,7 @@ function Navbar1({ total = 0 }) {
           <Link to="/cart" style={{ textDecoration: "none" }}>
             <Button variant="outline-light" disabled>
               <FontAwesomeIcon icon={faCartShopping} className="me-1" /> Total: $
-              {total.toLocaleString("es-CL")}
+              {totalPrice.toLocaleString("es-CL")}
             </Button>
           </Link>
         </Nav>

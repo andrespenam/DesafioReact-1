@@ -9,7 +9,8 @@ El Siguiente desafio se hizo de la siguiente manera:
 #### 5.- Agregando Cart y Renderizado
 #### 6.- Consumo de Apis
 #### 7.- Agregando React-Router
-#### 8.- Subido a GitHub.
+#### 8.- Agregando Context
+#### 9.- Subido a GitHub.
 
 
 ## _INICNIANDO UNA GRAN EXPERIENCIA CON REACT_
