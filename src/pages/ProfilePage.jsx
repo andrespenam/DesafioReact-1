@@ -1,36 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 function ProfilePage() {
-    const [user, setUser] = useState(null);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const sessionUser = JSON.parse(localStorage.getItem('session'));
-        if (!sessionUser) {
-            navigate('/login'); // Redirige si no hay sesión
-        } else {
-            setUser(sessionUser); // Carga datos del usuario
-        }
-    }, [navigate]);
-
-    const handleLogout = () => {
-        localStorage.removeItem('session');
-        navigate('/login');
-    };
-
-    if (!user) return null; // Evita error si redirige antes de mostrar
+    
+    const fakeUser = { name: "Usuario Demo", email: "demo@pizzeria.com" };
 
     return (
         <div>
-            
-            <Header />  
+            <Header />
             <div style={styles.container}>
                 <h2>Perfil de Usuario</h2>
-                <p><strong>Nombre:</strong> {user.email}</p>
-                <p><strong>Email:</strong> {user.email}</p>
+                <p><strong>Nombre:</strong> {fakeUser.name}</p>
+                <p><strong>Email:</strong> {fakeUser.email}</p>
             </div>
             <Footer />
         </div>

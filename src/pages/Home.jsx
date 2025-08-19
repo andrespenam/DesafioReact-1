@@ -12,9 +12,8 @@ function Home() {
   return (
     <div>
       <Header />
-
       <main className="container p-4">
-        <section className="row gap-5 ">
+        <section className="row gap-5">
           {pizzas.map((pizza) => (
             <CardPizza
               key={pizza.id}
@@ -22,16 +21,15 @@ function Home() {
               title={pizza.name}
               ingredientes={pizza.ingredients}
               price={pizza.price}
-              onAdd={() => addToCart(pizza)} 
-            />
+              onAdd={() => addToCart(pizza)}
+            >
+              <Link to={`/pizza/${pizza.id}`} style={{ textDecoration: 'none' }}>
+                <button className="btn btn-outline-dark mt-2">Ver más</button>
+              </Link>
+            </CardPizza>
           ))}
         </section>
-
-        <Link to="/pizza" className="text-center" style={{ textDecoration: 'none' }}>
-          <button className="more btn btn-dark">Más Pizzas</button>
-        </Link>
       </main>
-
       <Footer />
     </div>
   );

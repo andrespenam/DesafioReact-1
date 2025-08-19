@@ -7,7 +7,7 @@ import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons';
 
 const element7 = <FontAwesomeIcon icon={faPizzaSlice} />;
 
-function CardPizza({ title, ingredientes, image, price, onAdd }) {
+function CardPizza({ title, ingredientes, image, price, onAdd, children }) {
   return (
     <Card style={{ width: '25rem' }}>
       <Card.Img variant="top" src={image} />
@@ -21,8 +21,8 @@ function CardPizza({ title, ingredientes, image, price, onAdd }) {
         <p>Precio: ${price.toLocaleString()}</p>
       </ListGroup>
       <Card.Body className='d-flex justify-content-around'>
-        <Button variant="light">Ver más..</Button>
         <Button variant="dark" onClick={onAdd}>Agregar</Button> 
+        {children && children}
       </Card.Body>
     </Card>
   );

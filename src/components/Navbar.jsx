@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -12,24 +12,13 @@ import {
   faRightToBracket,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useUser } from "../context/UserContext"; 
 
 function Navbar1() {
-  const [token, setToken] = useState(false);
-  const navigate = useNavigate();
+  const { token, logout } = useUser(); 
   const { totalPrice } = useCart();
-
-  useEffect(() => {
-    const session = localStorage.getItem("session");
-    setToken(!!session);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("session");
-    setToken(false);
-    navigate("/loginPage");
-  };
 
   return (
     <Navbar bg="dark" data-bs-theme="dark" fixed="top">
@@ -52,7 +41,7 @@ function Navbar1() {
                   <FontAwesomeIcon icon={faUser} className="me-1" /> Profile
                 </Button>
               </Link>
-              <Button variant="outline-light" onClick={handleLogout}>
+              <Button variant="outline-light" onClick={logout}>
                 <FontAwesomeIcon icon={faLock} className="me-1" /> Logout
               </Button>
             </>

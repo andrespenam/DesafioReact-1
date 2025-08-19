@@ -9,7 +9,7 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [tipoMensaje, setTipoMensaje] = useState('');
-  const navigate = useNavigate(); // 👈 para redireccionar
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,12 +31,12 @@ function LoginPage() {
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-      localStorage.setItem('session', JSON.stringify(user)); // 👈 Guardar sesión
+      localStorage.setItem('session', JSON.stringify(user)); 
       setMensaje('Inicio de sesión exitoso');
       setTipoMensaje('exito');
 
       setTimeout(() => {
-        navigate('/profile'); // 👈 Redirigir al perfil
+        navigate('/profile'); 
       }, 1000);
     } else {
       setMensaje('Email o contraseña incorrectos');
@@ -84,7 +84,7 @@ function LoginPage() {
   );
 }
 
-// Estilos (sin cambios)
+
 const styles = {
   container: {
     maxWidth: '400px',

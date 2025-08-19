@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // 👈 Para redirigir
+import { useNavigate } from 'react-router-dom'; 
 import Footer from '../components/Footer';
 import Navbar1 from '../components/Navbar';
 import Header from '../components/Header';
@@ -10,12 +10,11 @@ function RegisterPage() {
   const [confirmarPassword, setConfirmarPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [tipoMensaje, setTipoMensaje] = useState('');
-  const navigate = useNavigate(); // 👈 Hook de react-router-dom
-
+  const navigate = useNavigate(); 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validaciones
+    
     if (!email || !password || !confirmarPassword) {
       setMensaje('Todos los campos son obligatorios');
       setTipoMensaje('error');
@@ -34,10 +33,10 @@ function RegisterPage() {
       return;
     }
 
-    // Obtener usuarios existentes
+  
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    // Verificar si ya existe
+    
     const existe = users.find(user => user.email === email);
     if (existe) {
       setMensaje('Este correo ya está registrado');
@@ -45,7 +44,7 @@ function RegisterPage() {
       return;
     }
 
-    // Guardar nuevo usuario
+    
     const nuevoUsuario = { email, password };
     users.push(nuevoUsuario);
     localStorage.setItem('users', JSON.stringify(users));
@@ -53,12 +52,12 @@ function RegisterPage() {
     setMensaje('Registro exitoso');
     setTipoMensaje('exito');
 
-    // Limpiar campos
+    
     setEmail('');
     setPassword('');
     setConfirmarPassword('');
 
-    // Redirigir al login después de un pequeño delay
+    
     setTimeout(() => {
       navigate('/loginPage');
     }, 1500);
@@ -112,7 +111,7 @@ function RegisterPage() {
   );
 }
 
-// Estilos (sin cambios)
+
 const styles = {
   container: {
     maxWidth: '400px',
