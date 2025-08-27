@@ -11,7 +11,8 @@ El Siguiente desafio se hizo de la siguiente manera:
 #### 7.- Agregando React-Router
 #### 8.- Agregando Context
 #### 9.- Agregando rutas protegidas y hook useParams
-#### 10.- Subido a GitHub.
+#### 10.- Agregando autenticado de JWT
+#### 11.- Subido a GitHub.
 
 
 ## _INICNIANDO UNA GRAN EXPERIENCIA CON REACT_

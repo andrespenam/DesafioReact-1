@@ -1,52 +1,59 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer';
-import Navbar1 from '../components/Navbar';
-import Header from '../components/Header';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+import Navbar1 from "../components/Navbar";
+import Header from "../components/Header";
+import { useUser } from "../context/UserContext";
+import Swal from "sweetalert2";
 
 function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [mensaje, setMensaje] = useState('');
-  const [tipoMensaje, setTipoMensaje] = useState('');
-  const navigate = useNavigate(); 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [tipoMensaje, setTipoMensaje] = useState("");
+  const navigate = useNavigate();
+  const { login, name } = useUser(); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (email.trim() === '' || password.trim() === '') {
-      setMensaje('Todos los campos son obligatorios');
-      setTipoMensaje('error');
+    if (email.trim() === "" || password.trim() === "") {
+      setMensaje("Todos los campos son obligatorios");
+      setTipoMensaje("error");
       return;
     }
 
     if (password.length < 6) {
-      setMensaje('La contraseña debe tener al menos 6 caracteres');
-      setTipoMensaje('error');
+      setMensaje("La contraseña debe tener al menos 6 caracteres");
+      setTipoMensaje("error");
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const success = await login(email, password);
 
-    const user = users.find(u => u.email === email && u.password === password);
-
-    if (user) {
-      localStorage.setItem('session', JSON.stringify(user)); 
-      setMensaje('Inicio de sesión exitoso');
-      setTipoMensaje('exito');
+    if (success) {
+      Swal.fire({
+        icon: "success",
+        title: "¡Bienvenido!",
+        text: `Hola ${name || email}, nos alegra verte de nuevo 🍕`,
+        confirmButtonColor: "#1976d2",
+      });
 
       setTimeout(() => {
-        navigate('/profile'); 
-      }, 1000);
+        navigate("/profile");
+      }, 1500);
     } else {
-      setMensaje('Email o contraseña incorrectos');
-      setTipoMensaje('error');
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Email o contraseña incorrectos",
+        confirmButtonColor: "#d32f2f",
+      });
     }
   };
 
   return (
     <div>
-      
       <Header />
       <div style={styles.container}>
         <h2 style={styles.title}>Login</h2>
@@ -67,13 +74,17 @@ function LoginPage() {
             style={styles.input}
           />
 
-          <button type="submit" style={styles.button}>Iniciar sesión</button>
+          <button type="submit" style={styles.button}>
+            Iniciar sesión
+          </button>
 
           {mensaje && (
-            <p style={{
-              ...styles.mensaje,
-              color: tipoMensaje === 'exito' ? 'green' : 'red'
-            }}>
+            <p
+              style={{
+                ...styles.mensaje,
+                color: tipoMensaje === "exito" ? "green" : "red",
+              }}
+            >
               {mensaje}
             </p>
           )}
@@ -84,47 +95,46 @@ function LoginPage() {
   );
 }
 
-
 const styles = {
   container: {
-    maxWidth: '400px',
-    margin: '50px auto',
-    padding: '20px',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    backgroundColor: '#f9f9f9',
+    maxWidth: "400px",
+    margin: "50px auto",
+    padding: "20px",
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    backgroundColor: "#f9f9f9",
   },
   title: {
-    textAlign: 'center',
-    marginBottom: '20px',
+    textAlign: "center",
+    marginBottom: "20px",
   },
   form: {
-    display: 'flex',
-    flexDirection: 'column'
+    display: "flex",
+    flexDirection: "column",
   },
   label: {
-    marginBottom: '5px',
-    fontWeight: 'bold'
+    marginBottom: "5px",
+    fontWeight: "bold",
   },
   input: {
-    marginBottom: '15px',
-    padding: '8px',
-    borderRadius: '4px',
-    border: '1px solid #ccc'
+    marginBottom: "15px",
+    padding: "8px",
+    borderRadius: "4px",
+    border: "1px solid #ccc",
   },
   button: {
-    padding: '10px',
-    backgroundColor: '#1976d2',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer'
+    padding: "10px",
+    backgroundColor: "#1976d2",
+    color: "white",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
   },
   mensaje: {
-    marginTop: '15px',
-    fontWeight: 'bold',
-    textAlign: 'center'
-  }
+    marginTop: "15px",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 };
 
 export default LoginPage;
